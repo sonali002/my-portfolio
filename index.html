@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonali's Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modernized Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Raleway:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #F97B22; /* Vibrant Orange */
+            --secondary-color: #f0f0f0;
+            --accent-color: #5874ef; /* Deep Purple */
+            --background-dark: #121212;
+            --card-dark: #1e1e1e;
+            --text-light: #d0d0d0;
+            --transition-duration: 0.5s;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-dark);
+            color: var(--secondary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+        
+        /* Skip to content link for accessibility */
+        .skip-to-content {
+            position: absolute;
+            left: -999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            z-index: -99;
+        }
+
+        .skip-to-content:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            z-index: 999;
+        }
+
+        /* Animated Background */
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .bg-animated li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(249, 123, 34, 0.2);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+        }
+
+        .bg-animated li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        .bg-animated li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .bg-animated li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        .bg-animated li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-duration: 18s; }
+        .bg-animated li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        .bg-animated li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+        .bg-animated li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+        .bg-animated li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+
+        @keyframes animate {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+        /* General Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .navbar .title {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Raleway', sans-serif;
+            transition: color var(--transition-duration);
+        }
+
+        .navbar .title:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar .links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 1rem;
+            margin-left: 2rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color var(--transition-duration);
+        }
+        
+        .navbar .links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-duration);
+        }
+
+        .navbar .links a:hover::after, .navbar .links a.active::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            color: var(--secondary-color);
+            transition: all var(--transition-duration);
+        }
+        
+        .hero-section h1:hover {
+            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+        }
+
+        .hero-section h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero-section p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2.5rem;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform var(--transition-duration), background-color var(--transition-duration), box-shadow var(--transition-duration);
+            box-shadow: 0 4px 15px rgba(249, 123, 34, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: #e06c1e;
+            box-shadow: 0 8px 25px rgba(249, 123, 34, 0.6);
+        }
+
+        /* --- Sections --- */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--accent-color);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- About Section --- */
+        .about-me {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .about-me img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            
+            box-shadow: 0 0 20px rgba(74, 0, 255, 0.5);
+            transition: transform var(--transition-duration);
+        }
+
+        .about-me img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        .about-me .text {
+            color: var(--text-light);
+            max-width: 600px; /* Constrain the text width for better readability */
+            margin: 0 auto;
+        }
+        .about-me .text h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* --- Grid & Card Layouts --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-color);
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Skills Section Improvements */
+        .skill-group-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            width: 80px; /* Set a fixed width for consistent alignment */
+        }
+        
+        .skill-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 0.5rem;
+            filter: grayscale(1); /* Greyscale by default */
+            transition: filter 0.3s ease-in-out, transform 0.3s;
+        }
+
+        .skill-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0); /* Colored on hover */
+        }
+
+        .skill-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* --- Contact Section --- */
+        .contact-info {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color var(--transition-duration);
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            background-color: var(--card-dark);
+            color: var(--text-light);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Animations & Responsive --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (min-width: 768px) {
+            .about-me {
+                flex-direction: row-reverse;
+                text-align: left;
+            }
+            .about-me .text {
+                padding-right: 0;
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <ul class="bg-animated" aria-hidden="true">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ul>
+
+    <div class="container" id="main-content">
+        <nav class="navbar">
+            <a href="#home" class="title">S<span style="color: var(--primary-color);">onali</span></a>
+            <div class="links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        
+        <main>
+            <section class="hero-section" id="home">
+                <h1 class="animate-on-scroll">Hi, I'm Sonali</h1>
+                <p class="animate-on-scroll" style="transition-delay: 0.3s;">I'm a passionate Full Stack Developer focused on building amazing digital experiences. 🚀</p>
+                <a href="#projects" class="cta-button animate-on-scroll" style="transition-delay: 0.6s;">View My Work</a>
+            </section>
+            
+            <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(249, 123, 34, 0.75), rgba(255, 255, 255, 0));">
+            
+            <section class="section" id="about">
+                <h2 class="section-title animate-on-scroll">About Me</h2>
+                <div class="about-me animate-on-scroll">
+                    <img src="IMG_20250619_203518.jpg" alt="Sonali's professional profile picture.">
+                    <div class="text">
+                        <p>As a dedicated Full-Stack Developer and a B.Tech student at Chandigarh Group of Colleges, Landran . I'm passionate about building elegant and efficient web applications. My foundation, strengthened by a Diploma in CSE from Chandigarh College of Engineering and Technology , drives my ability to tackle complex challenges. I specialize in transforming innovative ideas into high-quality, user-centric digital products.</p>
+                       </div>
+                </div>
+            </section>
+            
+            <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(249, 123, 34, 0.75), rgba(255, 255, 255, 0));">
+            
+            <section class="section" id="skills">
+                <h2 class="section-title animate-on-scroll">Skills</h2>
+                <div class="grid-container animate-on-scroll">
+                    <div class="card">
+                        <h3>Front-End</h3>
+                        <div class="skill-group-container">
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/html-5--v1.png" alt="HTML5 Icon">
+                                <p>HTML</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/css3.png" alt="CSS3 Icon">
+                                <p>CSS</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/javascript--v1.png" alt="JavaScript Icon">
+                                <p>JavaScript</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/officel/60/react.png" alt="React Icon">
+                                <p>React</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/bootstrap--v2.png" alt="Bootstrap Icon">
+                                <p>Bootstrap</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Back-End</h3>
+                        <div class="skill-group-container">
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/fluency/60/node-js.png" alt="Node.js Icon">
+                                <p>Node.js</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/express-js.png" alt="Express Icon">
+                                <p>Express</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/mongodb.png" alt="MongoDB Icon">
+                                <p>MongoDB</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/sql.png" alt="SQL Icon">
+                                <p>SQL</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/django.png" alt="Django Icon">
+                                <p>Django</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Other Skills</h3>
+                        <div class="skill-group-container">
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/c-plus-plus.png" alt="C++ Icon">
+                                <p>C++</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/java-coffee-cup-logo--v1.png" alt="Java Icon">
+                                <p>Java</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/python--v1.png" alt="Python Icon">
+                                <p>Python</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/api.png" alt="API Icon">
+                                <p>RESTful APIs</p>
+                            </div>
+                            <div class="skill-item">
+                                <img src="https://img.icons8.com/color/60/git.png" alt="Git Icon">
+                                <p>Git</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(249, 123, 34, 0.75), rgba(255, 255, 255, 0));">
+            
+            <section class="section" id="projects">
+                <h2 class="section-title animate-on-scroll">Projects</h2>
+                <div class="grid-container animate-on-scroll">
+                    <div class="card">
+                        <h3>MP3 Player Using Python</h3>
+                        <p>Developed a desktop application that allows users to play, pause, and manage their music library. The application features a user-friendly interface and supports various audio formats, utilizing libraries such as Tkinter for the GUI and Pygame for audio playback.</p>
+                        <a href="#" class="cta-button" style="margin-top: 0;">View Project</a>
+                    </div>
+                    <div class="card">
+                        <h3>JobFair Using Python</h3>
+                        <p>Created a web application that connects job seekers with potential employers. The platform allows users to create profiles, upload resumes, and apply for jobs, while employers can post job listings and review applications. Built using Flask and SQLAlchemy for the backend.</p>
+                        <a href="#" class="cta-button" style="margin-top: 0;">View Project</a>
+                    </div>
+                    <div class="card">
+                        <h3>Career Hive Platform</h3>
+                        <p>Developed a comprehensive platform for job and internship opportunities, offering online courses to enhance user skills. The platform includes features for job listings, user profiles, and course enrollment, built using Django and React.</p>
+                        <a href="#" class="cta-button" style="margin-top: 0;">View Project</a>
+                    </div>
+                </div>
+            </section>
+            
+            <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(249, 123, 34, 0.75), rgba(255, 255, 255, 0));">
+            
+            <section class="section" id="experience">
+                <h2 class="section-title animate-on-scroll">Experience</h2>
+                <div class="grid-container animate-on-scroll">
+                    <div class="card">
+                        <h3>Full Stack Developer - TCIL, CHANDIGARH</h3>
+                        <p>Responsible for designing and implementing web applications using technologies such as Node.js, Express, and MongoDB for the backend, and React.js for the frontend. Collaborated with cross-functional teams to gather requirements, develop APIs, and ensure seamless integration of user-facing elements with server-side logic.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Front End Developer - EDUNET FOUNDATION</h3>
+                        <p>Focused on creating responsive and visually appealing user interfaces using HTML, CSS, and JavaScript. Worked closely with designers to translate wireframes into functional web pages, ensuring cross-browser compatibility and performance optimization.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Python Developer - INFOWIZ, CHANDIGARH</h3>
+                        <p>Developed and maintained backend services and APIs using Python and Django. Responsibilities included writing clean, maintainable code and implementing data storage solutions with PostgreSQL. Collaborated with front-end developers to integrate user-facing elements with server-side logic and participated in the full software development lifecycle.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(249, 123, 34, 0.75), rgba(255, 255, 255, 0));">
+            
+            <section class="section" id="contact">
+                <h2 class="section-title animate-on-scroll">Contact Me</h2>
+                <div class="contact-info animate-on-scroll">
+                    <p>Feel free to reach out via email or connect with me on LinkedIn! Let's discuss your next project. 😊</p>
+                    <p>Email: <a href="mailto:sonali84271@gmail.com">sonali84271@gmail.com</a></p>
+                    <p><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/Sonali-sj">linkedin.com/in/Sonali-sj</a></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2025 Sonali. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in effect on scroll
+        const faders = document.querySelectorAll('.animate-on-scroll');
+        const appearOptions = {
+            threshold: 0.2
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('active');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // Dynamic active link in navbar
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".navbar .links a");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            const yOffset = window.pageYOffset;
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop - 100; // Adjusted for better timing
+                const sectionHeight = section.clientHeight;
+                if (yOffset >= sectionTop && yOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
